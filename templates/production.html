@@ -1,0 +1,98 @@
+{%extends 'layout.html'%}
+
+{% block content %}
+
+<div class="formcontainer">
+    <div class="container-fluid col-lg-4 card" style="padding:20px; margin-top:20px">
+		<h3 style="text-align: center;" class="card-heading">Crop Yield Predictor</h3>
+        <Form action="/predict" method="post" id="predict">
+            <!-- <img src="{{url_for('static', filename='1.jpeg')}}" width="20%" height="10%"></center> -->
+            <div class="form-group" style="margin-top:2%">
+
+                <label for="state">Choose your region:</label>
+                <select name="state" id="state" form="predict" class="form-control" required>
+                    <option selected value="">Choose...</option>
+                    <option value="up">Uttar Pradesh</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="uk">Uttrakhand</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="chattisgarh">Chattisgarh</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="hp">Himanchal Pradesh</option>
+                    <option value="ap">Arunachal Pradesh</option>
+                    <option value="jk">Jammu And Kashmir</option>
+                    <option value="tn">Tamil Nadu</option>
+                    <option value="andaman">Andaman And Nicobar</option>
+                </select>
+            </div>
+
+
+            <div class="form-group" style="margin-top:2%">
+
+                <label for="season">Choose a season:</label>
+                <select name="season" id="season" form="predict" class="form-control" required>
+                    <option selected  value="">Choose...</option>
+                    <option value="rabi">Rabi</option>
+                    <option value="kharif">Kharif</option>
+                    <option value="wholeyear">Whole Year</option>
+                    <option value="summer">Summer</option>
+                    <option value="winter">Winter</option>
+                </select>
+            </div>
+
+
+
+
+            <div class="form-group" style="margin-top:2%">
+                <label for="crop_name">Choose a crop:</label>
+                <select name="crop_name" id="crop_name" form="predict" class="form-control" required>
+                    <option selected value="">Choose...</option>
+                    <option value="rice">Rice</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="potato">Potato</option>
+                    <option value="drychillies">Dry Chillies</option>
+                    <option value="maize">Maize</option>
+                    <option value="masoor">Masoor</option>
+                    <option value="moong">Moong(Green Gram)</option>
+                    <option value="onion">Onion</option>
+                    <option value="peas">Peas & beans (Pulses)</option>
+                    <option value="ragi">Ragi</option>
+                    <option value="rapeseed">Rapeseed & Mustard</option>
+                    <option value="sesamum">Sesamum</option>
+                    <option value="urad">Urad</option>
+                    <option value="groundnut">Groundnut</option>
+                    <option value="gram">Gram</option>
+
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Year(Year>1996):</label>
+                <input type="text" id="year" name="year" class="form-control" required placeholder="Enter the year">
+            </div>
+            <div class="form-group">
+                <label for="area">Area (in Hectare and greater than zero):</label>
+                <input type="text" id="area" name="area" class="form-control" required placeholder="Enter the area">
+            </div>
+            <div class="form-group">
+                <label for="area">Rainfall (in mm and greater than 0):</label>
+                <input type="text" id="rain" name="rain" class="form-control" required placeholder="Enter the rainfall">
+            </div class="d-flex justify-content-center">
+            
+            <button  type="submit" class="btn btn-success" id="prd_btn" name="prd_btn">Predict</button>
+        </Form>
+
+    </div>
+
+</div>
+
+
+<div id="out" style="margin-top:20px;">
+    <h5 class="{{cls}}" role="alert" align="center"> {{output}}</h5>
+</div>
+
+
+{% endblock %}
+

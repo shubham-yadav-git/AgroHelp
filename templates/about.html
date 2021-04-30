@@ -1,0 +1,190 @@
+{%extends 'layout.html' %}
+
+
+{% block content %}
+
+<style>
+    .head {
+        text-align: center;
+        color: green;
+        margin: 2rem;
+        font-size: xx-large;
+    }
+    
+    .subhead {
+        color: rgba(136, 82, 2, 0.815);
+        font-size: large;
+        margin: 2rem 1rem;
+    }
+    
+    a {
+        /* text-decoration-style: none; */
+        color: blue;
+    }
+    
+    .img-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        /* space-between: 0.8; */
+        margin-bottom: 2rem;
+    }
+    
+    .para-container {
+        text-align: justify;
+        font-size: large;
+        margin-bottom: 2rem;
+        margin: 2rem 1rem;
+    }
+    
+</style>
+
+
+
+
+<div id="head" name="head" class="head">
+        <h4>How do we predict?</h4>
+    </div>
+
+    <div class="content">
+        <h4 class="subhead">Technologies Used</h4>
+        <p id="content" name="content" class="para-container">This webapp is designed using <a href="https://www.w3schools.com/html/html_intro.asp">html</a>,<a href="https://www.w3schools.com/css/css_intro.asp"> css</a>, <a href="https://getbootstrap.com/">bootstrap</a>(few features) for frontend and connected
+            to Machine Learning Model using <a href="https://flask.palletsprojects.com/en/1.1.x/"> Flask (Python framework)</a>. </p>
+    </div>
+    </details>
+
+    <div class="content">
+
+        <p class="para-container">
+            We developed our model in three steps:
+            <ol>
+
+                <li>
+                    <a href="#data-pre">Data Pre-processing</a>
+                </li>
+
+
+                <li>
+                    <a href="#model-train">Model Training</a>
+                </li>
+
+
+                <li>
+                    <a href="#model-test">Model Analysis </a>
+                </li>
+
+            </ol>
+        </p>
+    </div>
+
+
+    <div id="data-pre">
+        <h4 class="subhead">Data Pre-processing</h4>
+        <p class="para-container">
+            Initially the data set with which we started was very big. The credit for data goes to <a href="https://data.gov.in/">data.gov.in</a>. We have used the two data set of which one included data of production of different crops with size (102800 X 5) and second data set comprises of rainfall
+            data of different states. Both the data sets contain data of 18 years from 1997-2015. After merging both the data sets properly. We filtered the most frequent crops data from the data set. The description of the data set after performing most of pre-processing is below:
+            <div class="table-responsive">
+                <table border="1" class="table table-light">
+                    <thead class="bg-success text-light">
+                        <tr style="text-align: right;">
+                            <th></th>
+                            <th>Year</th>
+                            <th>Area</th>
+                            <th>Production</th>
+                            <th>Rainfall</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="bg-success text-light">count</th>
+                            <td>62257.000000</td>
+                            <td>62257.000000</td>
+                            <td>6.225700e+04</td>
+                            <td>62257.000000</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">mean</th>
+                            <td>2005.913150</td>
+                            <td>13812.748856</td>
+                            <td>3.379479e+04</td>
+                            <td>1106.764675</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">std</th>
+                            <td>5.102923</td>
+                            <td>39455.645792</td>
+                            <td>1.183489e+05</td>
+                            <td>462.557062</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">min</th>
+                            <td>1997.000000</td>
+                            <td>0.280000</td>
+                            <td>2.000000e-02</td>
+                            <td>274.700000</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">25%</th>
+                            <td>2002.000000</td>
+                            <td>113.000000</td>
+                            <td>1.000000e+02</td>
+                            <td>746.900000</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">50%</th>
+                            <td>2006.000000</td>
+                            <td>824.000000</td>
+                            <td>9.020000e+02</td>
+                            <td>1061.000000</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">75%</th>
+                            <td>2010.000000</td>
+                            <td>5225.000000</td>
+                            <td>7.569000e+03</td>
+                            <td>1332.500000</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-success text-light">max</th>
+                            <td>2015.000000</td>
+                            <td>687000.000000</td>
+                            <td>1.969000e+06</td>
+                            <td>3616.700000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            And some descriptions are portrayed using <a href="https://matplotlib.org/">matplotlib library</a> of python.
+        </p>
+        <div class="img-container">
+            <img class="img-fluid" src="{{url_for('static', filename='desc2.png')}}">
+            <img class="img-fluid" src="{{url_for('static', filename='crops.png')}}">
+            <img class="img-fluid" src="{{url_for('static', filename='cropscount.png')}}">
+
+        </div>
+
+    </div>
+
+
+    <div id="model-train">
+        <h4 class="subhead">Model Train</h4>
+        <p class="para-container">
+            This model has been trained using <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html"> Random Forest Regressor </a> algorithm of of Sklearn's package of python and model is saved using joblib
+            package. Before training the model we divided the data set in ratio of:
+        </p>
+        <div class="img-container"> <img class="img-fluid" src="{{url_for('static', filename='traintest.png')}}">
+        </div>
+    </div>
+
+    <div id="model-test">
+        <h4 class="subhead"> Model Analysis</h4>
+        <p class="para-container">
+            Then model is tested on test data set. The accuracy score we found on test data was 96.701% and difference in actual and predicted values of some of the test data shown through following graphs:
+        </p>
+        <div class="img-container">
+            <img class="img-fluid" src="{{url_for('static', filename='actpred.png')}}">
+            <img class="img-fluid" src="{{url_for('static', filename='actpredscatter.png')}}">
+        </div>
+    </div>
+
+  {% endblock %}
