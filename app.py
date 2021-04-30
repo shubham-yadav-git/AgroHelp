@@ -4,8 +4,6 @@ import numpy as np
 import requests
 
 app = Flask(__name__)
-
-
 # Predictor code
 
 model = load("cpp27.joblib")

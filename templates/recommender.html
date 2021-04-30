@@ -3,6 +3,11 @@
 
 {% block content %}
 
+
+<div id="out" style="margin-top:20px;">
+  <h5 class="{{cls}}" role="alert" align="center"> {{output}}</h5>
+</div>
+
 <div class="formcontainer">
     <div class="container-fluid col-lg-4 card" style="padding:20px; margin-top:20px">
 		<h3 style="text-align: center;" class="card-heading">Crop Recommender</h3>
@@ -113,9 +118,7 @@
 </div>
 
 
-<div id="out" style="margin-top:20px;">
-    <h5 class="{{cls}}" role="alert" align="center"> {{output}}</h5>
-</div>
+
 
 
 {% endblock %}

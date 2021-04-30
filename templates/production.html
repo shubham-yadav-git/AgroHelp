@@ -2,6 +2,11 @@
 
 {% block content %}
 
+
+<div id="out" style="margin-top:20px;">
+    <h5 class="{{cls}}" role="alert" align="center"> {{output}}</h5>
+</div>
+
 <div class="formcontainer">
     <div class="container-fluid col-lg-4 card" style="padding:20px; margin-top:20px">
 		<h3 style="text-align: center;" class="card-heading">Crop Yield Predictor</h3>
@@ -81,7 +86,7 @@
                 <input type="text" id="rain" name="rain" class="form-control" required placeholder="Enter the rainfall">
             </div class="d-flex justify-content-center">
             
-            <button  type="submit" class="btn btn-success" id="prd_btn" name="prd_btn">Predict</button>
+        <button  type="submit" class="btn btn-success " id="prd_btn" name="prd_btn">Predict</button>
         </Form>
 
     </div>
@@ -89,9 +94,7 @@
 </div>
 
 
-<div id="out" style="margin-top:20px;">
-    <h5 class="{{cls}}" role="alert" align="center"> {{output}}</h5>
-</div>
+
 
 
 {% endblock %}
