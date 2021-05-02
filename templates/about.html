@@ -8,7 +8,7 @@
         text-align: center;
         color: green;
         margin: 2rem;
-        font-size: xx-large;
+        /* font-size: xx-large; */
     }
     
     .subhead {
@@ -37,6 +37,10 @@
         margin: 2rem 1rem;
     }
     
+    .table-responsive{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 </style>
 
 
@@ -56,7 +60,18 @@
     <div class="content">
 
         <p class="para-container">
-            We developed our model in three steps:
+            We have developed two ML models.
+            <ul>
+                <li><a href="#predictor">Crop Production Predictor</a> </li>
+                <li><a href="#recommender">Crop Recommender</a></li>
+            </ul>
+        </p>
+        <div id="production">
+            <h4 class="head">Crop Production Predictor</h4>
+        <p class="para-container">
+           This model solves a regression problem and predicts the yield of the several crops
+           in several regions in India on the basis of several parameters passed as input.<br>
+           We developed our this model in three steps:
             <ol>
 
                 <li>
@@ -187,4 +202,151 @@
         </div>
     </div>
 
+        </div>
+        
+        <div class="" id="recommender">
+            <h4 class="head">Crop Recommender</h4>
+            <p class="para-container">
+                This model solves a classification problem that is on the basis of certain parameters we provide and recommends us a 
+                crop most suitable for us on the basis of our soil and atmospheric conditions.
+
+            </p>
+            <p class="para-container">
+                The dataset for this model we got from Kaggle platform. The dataset we got the is already very balanced and free from inconsistencies
+                so most of our pre-processing task was already performed which made our task a lot easier.<br>
+                This model is performed in three basic steps:
+                <ol>
+                    <li><a href="#rec-datapre" >Data-Preprocessing</a></li>
+                    <li><a href="#rec-train" class="href">Model Training</a></li>
+                    <li><a href="#rec-analysis" class="href">Model Analysis</a></li>
+                </ol>
+            </p>
+                <div class="" id="rec-datapre">
+
+
+                <h4 class="subhead">Data-Preprocessing</h4>
+            <p class="para-container">
+                
+                The description of data is shown below :<br>
+
+                <div class="table-responsive">
+                <table border="1" class="table table-light">
+                    <thead class="bg-success text-light">
+                      <tr style="text-align: right;">
+                        <th  class="bg-success text-light"></th>
+                        <th>Year</th>
+                        <th>Area</th>
+                        <th>Production</th>
+                        <th>Rainfall</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="bg-success text-light">count</th>
+                        <td>62257.000000</td>
+                        <td>62257.000000</td>
+                        <td>6.225700e+04</td>
+                        <td>62257.000000</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">mean</th>
+                        <td>2005.913150</td>
+                        <td>13812.748856</td>
+                        <td>3.379479e+04</td>
+                        <td>1106.764675</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">std</th>
+                        <td>5.102923</td>
+                        <td>39455.645792</td>
+                        <td>1.183489e+05</td>
+                        <td>462.557062</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">min</th>
+                        <td>1997.000000</td>
+                        <td>0.280000</td>
+                        <td>2.000000e-02</td>
+                        <td>274.700000</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">25%</th>
+                        <td>2002.000000</td>
+                        <td>113.000000</td>
+                        <td>1.000000e+02</td>
+                        <td>746.900000</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">50%</th>
+                        <td>2006.000000</td>
+                        <td>824.000000</td>
+                        <td>9.020000e+02</td>
+                        <td>1061.000000</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">75%</th>
+                        <td>2010.000000</td>
+                        <td>5225.000000</td>
+                        <td>7.569000e+03</td>
+                        <td>1332.500000</td>
+                      </tr>
+                      <tr>
+                        <th class="bg-success text-light">max</th>
+                        <td>2015.000000</td>
+                        <td>687000.000000</td>
+                        <td>1.969000e+06</td>
+                        <td>3616.700000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+             </p>
+            <p class="para-container">
+                This pie chart shows the distribution of different labels :<br>
+            </p>
+                <div class="img-container">
+                    <img class="img-fluid"  src="{{ url_for('static',filename='about/recommender/datadesc.png') }}" >
+                </div>
+              <p class="para-container">
+                From this chart it is clearly visible that our model is completely suitable for training our model as it is 
+                perfectly balanced and consistent.
+            </p>
+        </div>
+    </div>
+        <div class="" id="rec-train">
+            <h4 class="subhead">Model Training</h4>
+            <p class="para-container">
+                We have trained different models like Decision Tree Classifier, Logistic regression, Random Forest Classifier,etc.
+                <br>
+                We have divided our dataset in train and test set in ratio of 80:20 which we decided after testing it at diffrent ratios and 
+                we found best results at it. We have used Random Forest Classifier model in production because it gives the best accuracy,precision,
+                recall and F1-score values. Thus, we have decided to use it.
+            </p>
+
+        </div>
+
+        <div class="" id="rec-analysis">
+            <p class="para-container">
+                After analysis we found our model gives around 99% accuracy. The comparison graph of it with other similar algorithms is shown
+                below:
+            </p>
+            <div class="img-container">
+                <img src="{{ url_for('static',filename='about/recommender/comp.png') }}">
+            </div>
+         
+        
+        </div>
+
+        <div class="conclusion">
+            <h4 class="subhead">Conclusion</h4>
+            <p class="para-container">
+                Our purpose is to develop some product using our knowlege of Technical domain
+                to create some value to Agricultural Domain. Surely, this project needs lot of imporovements, enhancement and it
+                is not perfect. As this is an acamedic project too so our purpose was also to use our knowlege of different and 
+                learn to implement them. In that attempt we are quite successful as in this single project we used our knowlege of 
+                Python, Flask(Python framework for web developement), HTML, CSS, Javascript, bootstrap and many other python libraries.
+            
+            </p>
+            <h4 class="head">Thank You!🙏</h4>
+        </div>
   {% endblock %}
