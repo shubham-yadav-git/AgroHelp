@@ -21,6 +21,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon/favicon-16x16.png') }}">
     <link rel="manifest" href=" {{ url_for('static', filename='favicon/site.webmanifest') }}">
 
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/toggle.css') }}">
+
     <title>{{title}}</title>
 
     <style>
@@ -106,6 +108,13 @@
              z-index: 999999;
          }
 
+
+         #toggle{
+                margin-left: auto;
+                margin-top: auto;
+                /* background-color: #000; */
+                font-weight: bold;
+         }
     </style>
 
 <script type="text/JavaScript" src="{{ url_for('static', filename='scripts/script.js') }}"></script>
@@ -115,10 +124,21 @@
 <body onload="myfunction()">
 
   <div id="loading"> </div>
+
   <div class="nav top navbar-expand-lg">
     
     <a class="navbar-brand" href="/"><img style="width: 40px; height: 40px;" src="{{url_for('static', filename='recommender/loader.gif')}}" ></a>
-    <h3 class="" style="padding-top: 5px;" >The AgroHelp</h3> 
+    <h3 class="" style="margin-top: auto;" >The AgroHelp</h3> 
+    <div class="" id="toggle">
+        Dark Mode
+        <label class="switch" >
+             
+            <input type="checkbox" id="checkbox" onclick="myCheck()">
+            <span class="slider round"></span>
+          </label>
+
+    </div>
+    
   </div>  
    
 <nav class="navbar navbar-light sticky-top navbar-expand-lg">
@@ -149,14 +169,48 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script>
+
+    
+function myCheck(){
+    // ch=sessionStorage.getItem("lastname");
+        check=document.getElementById("checkbox");
+        console.log(check.checked);
+        ch=check.checked
+
+    if ( ch== true){
+    // text.style.display = "block";
+        body=document.getElementsByTagName('body');
+        document.body.style.background="#121212";
+        document.body.style.color="White";
+        // console.log(body);
+
+        // sessionStorage.setItem("ch", "true");
+        
+    
+  } else {
+        body=document.getElementsByTagName('body');
+        document.body.style.background="White";
+        document.body.style.color="black";
+        // sessionStorage.setItem("ch", "false");
+  }
+}
+
     preloader=document.getElementById("loading");
     function myfunction(){
         preloader.style.display='none';
+        myCheck();
     }
+
+// Retrieve
+
+   
+
+    
+
 </script>
 </body>
 <footer>
-    <p>@copyright AgroHelp</p>
+    <p>AgroHelp©2021</p>
     <p>Designed and developed with the purpose to utilize technology in field of agriculture.</p>
 </footer>
 </html>

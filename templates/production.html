@@ -94,8 +94,26 @@
 </div>
 
 
+<!-- <script type="text/javascript">
+    $(document).on('submit','#predict',function(e)
+                   {
+      console.log('hello');
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'/predict',
+        data:{
+        //   todo:$("#todo").val()
+        },
+        success:function()
+        {
+          alert('saved');
+        }
+      })
+    });
+  </script>
+</script>
 
-
-
+ -->
 {% endblock %}
 
