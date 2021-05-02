@@ -1,9 +1,135 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <div id="container" name="container" class="container">
-        
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h2 {
+
+        padding: 30px;
+    }
+
+    /* Float four columns side by side */
+    .column {
+        float: left;
+        width: 50%;
+        padding: 20px 90px;
+    }
+
+    .column1 {
+        float: left;
+        width: 50%;
+        padding: 50px 80px;
+    }
+
+    /* Remove extra left and right margins, due to padding */
+    .row {
+        margin: 10px -5px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive columns */
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 30px;
+        }
+    }
+
+    /* Style the counter cards */
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #e4e7ee;
+    }
+</style>
+<div id="container" name="container" class="container">
+    <h2 style="text-align-last: center;"><b>Project Guide</b></h2>
+
+    <div class="row">
+        <div class="column">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Vijay Dwivedi</b></h4>
+                    <p>Head of Department</p>
+                    <span>&#9993; Shubhamskyjnp@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Anshu Tiwari</b></h4>
+                    <p>Professor</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <h2 style="text-align-last: center;"> <b>Group Members</b></h2>
+    <div class="row">
+        <div class="column1">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Shubham Yadav</b></h4>
+                    <span>&#9993; Shubhamskyjnp@gmail.com</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="column1">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Vipin Kumar Mishra</b></h4>
+                    <p>Roll no. - 1701010163</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column1">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Shivam Jaiswal</b></h4>
+                    <p>Roll no. - 1701010163</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column1">
+            <div class="card">
+
+                <div class="container">
+                    <h4><b>Shikhar Ranjan</b></h4>
+                    <p>Roll no. - 1701010163</p>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 
- {% endblock %}
+</div>
+
+{% endblock %}
