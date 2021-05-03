@@ -1,0 +1,80 @@
+{% extends 'layout.html' %} 
+{% block content %} 
+
+<style>
+  .container{
+    margin-top: 30px; 
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+    align-items: center;
+  }
+  
+  
+  
+  p{
+    margin: 1rem;
+  }
+  
+  .card:hover{
+       transform: scale(1.06);
+    box-shadow: 0 12px 24px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  }
+  
+  .agrinews{
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 10px;
+    font-family: cursive;
+    align-items: center;
+  }
+  
+  .newsitem{
+  margin: 1rem;
+  background-color: bisque;
+  max-width: 20rem;
+  }
+</style>
+<h1 style="margin-top: 30px;">Agricultural News</h1>
+
+
+<div class="agrinews"> 
+  
+ {% for title, link in news.items() %}
+ <div class="card mb-3 newsitem" style="max-width: 350px;" onclick="loadFullNews( '{{ link }}' )">
+     <blockquote class="blockquote mb-0">
+       <p>{{title}}</p>
+       <footer class="blockquote-footer">
+         <small>
+           Source: <cite title="Source Title">The Hindu</cite>
+         </small>
+       </footer>
+     </blockquote>
+   </div>
+  
+ 
+ {% endfor %}
+ 
+ 
+ </div>
+<script>
+  function loadFullNews(l){
+    window.open(l,'_blank');
+  }
+
+  function loadPredictor(){
+    window.open("/production",'_blank');
+  }
+
+  function loadRecommender(){
+    window.open("/recommender",'_blank');
+  }
+</script>
+
+
+{% endblock %}

@@ -12,20 +12,32 @@
   align-items: center;
 }
 
-.item{
 
-}
 
 p{
   margin: 1rem;
 }
 
 .card:hover{
-     transform: scale(1.07);
+     transform: scale(1.06);
   box-shadow: 0 12px 24px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
+.agrinews{
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 10px;
+  font-family: cursive;
+  /* align-items: center; */
+}
 
+.newsitem{
+margin: 1rem;
+/* background-color: bisque; */
+
+}
 </style>
 
 
@@ -76,7 +88,7 @@ p{
   <div class="container" >
     
       <div class="item">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3" style="max-width: 540px;" onclick="loadPredictor()">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="{{ url_for('static', filename='recommender/wheat.jfif') }}" class="card-img" alt="Production">
@@ -94,7 +106,7 @@ p{
   
   
       <div class="item">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-3" style="max-width: 540px;" onclick="loadRecommender()">
           <div class="row no-gutters">
             <div class="col-md-4">
               <img src="{{ url_for('static', filename='recommender/orange.jfif') }}" class="card-img" alt="...">
@@ -130,10 +142,45 @@ use historical data as input to predict new output values.”
   </p>
 </div>
 
-<div class="container">
-  <p><h1>Our Android App</h1></p>
-  <a href="https://play.google.com/store/apps/details?id=com.sky.cpp"><img class="img-fluid"src="{{ url_for('static', filename='recommender/abage.png') }}"></a>
-
+<!-- <h1 style="margin-top: 30px;"></h1> -->
+<div class="container" >
+  <p><h1 >Our Android App</h1></p>
+  <a href="https://play.google.com/store/apps/details?id=com.sky.cpp"><centre><img class="img-fluid"src="{{ url_for('static', filename='recommender/abage.png') }}"></centre></a>
 </div>
 
+
+<div class="agrinews"  style="background-color: bisque;"> 
+  
+  <h1 style="padding: 30px; align-self: center;width: 100%;">Agricultural News</h1>
+
+ {% for title, link in news.items() %}
+ <div class="card mb-3 newsitem" style="max-width: 350px;" onclick="loadFullNews( '{{ link }}' )">
+     <blockquote class="blockquote mb-0">
+       <p>{{title}}</p>
+       <footer class="blockquote-footer">
+         <small>
+           Source: <cite title="Source Title">The Hindu</cite>
+         </small>
+       </footer>
+     </blockquote>
+   </div>
+  
+ 
+ {% endfor %}
+ 
+ 
+ </div>
+<script>
+  function loadFullNews(l){
+    window.open(l,'_blank');
+  }
+
+  function loadPredictor(){
+    window.open("/production",'_blank');
+  }
+
+  function loadRecommender(){
+    window.open("/recommender",'_blank');
+  }
+</script>
 {% endblock %}

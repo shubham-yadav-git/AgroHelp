@@ -1,9 +1,18 @@
 from flask import Flask, request, jsonify, render_template
 from joblib import load
 import numpy as np
-import requests
+import requests,json
 
 app = Flask(__name__)
+
+# News Api Parsing
+
+response = requests.get("https://agri-news.herokuapp.com/")
+news = json.loads(response.text)
+
+## News Api End
+
+
 # Predictor code
 
 model = load("cpp27.joblib")
@@ -51,9 +60,13 @@ def calculate(year, area, crop, rainfall, state, season):
     return output, cls
 
 
+
+
+
+
 @app.route('/')
 def home():
-    return render_template("index.html", title="AgroHelp",home="active")
+    return render_template("index.html", title="AgroHelp",home="active", news=news)
 
 @app.route('/production')
 def production():
@@ -68,6 +81,9 @@ def recommender():
 def about():
     return render_template("about.html",title="About",about="active")
 
+@app.route('/agronews')
+def agronews():
+    return render_template("news.html", title="AgroNews", agronews="active", news=news)
 
 @app.route('/contact')
 def contact():
@@ -88,7 +104,7 @@ def predict():
 
         output, cls = calculate(year, area, crop, rainfall, state, season)
 
-        return render_template("production.html", output=format(output), cls=format(cls))
+        return render_template("production.html", output=format(output), cls=format(cls), production="active")
 
     except:
         return render_template("production.html", output="Please provide valid values. (Year>1997 Rainfall>0 and Area>0)")
@@ -106,10 +122,10 @@ def api():
     ans={"out": output}
     return jsonify(ans)
 
+# Predictor End
 
 
-
-# Recommender Code
+# Recommender Code Start
 
 rec_model=load("rf_classifier.joblib")
 
