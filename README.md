@@ -1,2 +1,4 @@
-# crop-yield-ml
-This is crop-yield predictor using random forest regression.
+# Agro-Help
+
+1. Crop Production Predictor
+2. Crop Recommender 
