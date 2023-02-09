@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 # News Api Parsing
 
-response = requests.get("https://agri-news.herokuapp.com/")
-news = json.loads(response.text)
-
+#response = requests.get("https://agri-news.herokuapp.com/")
+#news = json.loads(response.text)
+news = {}
 ## News Api End
 
 
