@@ -5,4 +5,4 @@
 
 
 To run this project using docker:
-docker push shubhamydocker/agrohelp:v01
+docker pull shubhamydocker/agrohelp:v01
